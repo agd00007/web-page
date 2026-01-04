@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Preferencias</title>
+    <style>
+        body.claro {
+            background-color: white;
+            color: black;
+        }
+        body.oscuro {
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+
+<body class=" no-loto <%= tema %>">
+    <div class="preferencias">
+    <h1 class="preferencias-titulo">Preferencias de usuario</h1>
+
+    <p class="preferencias-parrafo" >Elige tu tema:</p>
+    <p class="preferencias-segundo-parrafo">Modo claro/modo oscuro</p>
+    
+
+    <form class="preferencias-btn" action="/preferencias" method="POST">
+        <button type="submit" name="tema" value="claro">Tema Claro</button>
+        <button type="submit" name="tema" value="oscuro">Tema Oscuro</button>
+    </form>
+
+    <p><a href="/">Volver al menu</a></p>
+
+    </div>
+</body>
+</html>

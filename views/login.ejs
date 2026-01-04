@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <title>Regristro</title>
+</head>
+<body class="registro-usuario">
+
+    <h1>Registro de usuario</h1>
+
+    <% if(typeof error !== 'undefined') { %>
+        <p style="color: red"> <%=error %></p>
+
+    <% } %>
+    
+    <form class="registro" action="/login" method="POST">
+        <label> Email
+        <input type="email" name="email" required>
+        </label>
+
+        <label> Contraseña
+            <input type="password" name="password" required>
+        </label>
+
+        <button type="submit">Entrar</button>
+
+        <p><a href="/">Volver al menu</a></p>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Formulario</title>
+</head>
+
+<body class="page-form">
+       
+   <% const errs = typeof errores !== "undefined" ? errores : []; %>
+
+   <% if (errs.length > 0) { %>
+    <ul style="color: red;">
+        <% errs.forEach(error => { %>
+            <li><%= error %></li>
+        <% }) %>
+    </ul>
+   <% } %>
+
+    <form class="form" action="/form" method="POST">
+        <label> 
+            Nombre:
+            <input type="text" name="nombre" value="<%= nombre || '' %>" required />
+        </label>
+        
+
+        <label>
+            Edad:
+            <input type="number" name="edad" value="<%= edad || '' %>" required />
+        </label>
+        
+
+        <label>
+            Email:
+            <input type="email" name="email" value="<%= email || '' %>" required />
+        </label>
+        
+
+        <label>
+            Ciudad:
+            <input type="text" name="ciudad" value="<%= ciudad || '' %>" required />
+        </label>
+        
+
+     <div class="array">
+
+
+      <span class="intereses-titulo">Intereses:</span>
+
+      <div class="intereses-items">
+
+      <label class="intereses-item">
+        <input type="checkbox" name="intereses" value="meditación"
+        <%= (intereses || []).includes("meditación") ? "checked" : "" %>>
+        Meditación
+      </label>
+
+      <label class="intereses-item">
+        <input type="checkbox" name="intereses" value="tarot"
+        <%= (intereses || []).includes("tarot") ? "checked" : "" %>>
+        Tarot
+      </label>
+
+      <label class="intereses-item">
+        <input type="checkbox" name="intereses" value="consciencia plena"
+        <%= (intereses || []).includes("consciencia plena") ? "checked" : "" %>>
+        Consciencia plena
+      </label>
+      </div>
+    </div>
+
+        <p></p>
+        <button type="submit">Enviar</button>
+
+        <p><a href="/">Volver al inicio</a></p>
+    </form>
+
+    
+</body>
+</html>

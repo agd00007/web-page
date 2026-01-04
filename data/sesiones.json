@@ -1,0 +1,5 @@
+[
+  {"id": 1, "nombre": "Viaje al Ser Interno", "precio": "105€", "imagen": "/img/viaje.jpg" },
+  { "id": 2, "nombre": "Meditación del Despertar", "precio": "200€", "imagen": "/img/meditacion.jpg" },
+  { "id": 3, "nombre": "Conexión SupraConsciente", "precio": "205€", "imagen": "/img/supraconsciencia.jpg" }
+]
