@@ -49,10 +49,69 @@ function dibujarCarrito() {
 
   carrito.forEach(l => {
     const div = document.createElement("div");
-    div.textContent = `${l.nombre} - ${l.cantidad} uds - ${l.subtotal} €`;
+
+    div.innerHTML = `
+      <strong>${l.nombre}</strong> 
+      <br>
+      Cantidad: ${l.cantidad} | Subtotal: ${l.subtotal} €
+      <br>
+      <button class="mas">+</button>
+      <button class="menos">-</button>
+      <button class="eliminar">Eliminar</button>
+    `;
+
+    div.querySelector(".mas").addEventListener("click", () => {
+      agregarAlCarrito(l.id);
+    });
+
+    div.querySelector(".menos").addEventListener("click", () => {
+      quitarUno(l.id);
+    });
+
+    div.querySelector(".eliminar").addEventListener("click", () => {
+      eliminarProducto(l.id);
+    });
+
     contenedor.appendChild(div);
     total += l.subtotal;
   });
 
-  totalDiv.textContent = `Total: ${total.toFixed(2)} €`;
+  totalDiv.innerHTML = `
+    Total: ${total.toFixed(2)} €
+    <br>
+    <button class="vaciar">Vaciar carrito</button>
+  `;
+
+  totalDiv.querySelector(".vaciar")?.addEventListener("click", vaciarCarrito);
 }
+
+
+function quitarUno(idProducto) {
+  const linea = carrito.find(l => l.id === idProducto);
+  if (!linea) return;
+
+  linea.cantidad -= 1;
+
+  if (linea.cantidad <= 0) {
+    carrito = carrito.filter(l => l.id !== idProducto);
+  } else {
+    const sesion = buscarProducto(idProducto);
+    const precio = Number(sesion.precio.replace("€", "").trim());
+    linea.subtotal = +(linea.cantidad * precio).toFixed(2);
+  }
+
+  dibujarCarrito();
+}
+
+
+function eliminarProducto(idProducto) {
+  carrito = carrito.filter(l => l.id !== idProducto);
+  dibujarCarrito();
+}
+
+function vaciarCarrito() {
+  carrito = [];
+  dibujarCarrito();
+}
+  
+
